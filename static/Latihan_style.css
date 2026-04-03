@@ -1,0 +1,28 @@
+/* 1. Mengecilkan Logo M agar tidak raksasa */
+.app-brand-logo svg {
+    width: 35px !important;
+    height: auto !important;
+}
+
+/* 2. Membuat kotak-kotak (cards) terlihat melayang dan rapi */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Bayangan halus */
+    padding: 20px;
+    background: white;
+}
+
+/* 3. Merapikan Sidebar */
+#layout-menu {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    border-right: 1px solid #e5e5e5;
+}
+
+/* 4. Jarak Konten agar tidak tertutup menu samping */
+.layout-page {
+    margin-left: 260px;
+    padding: 30px;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuel Tracker - Musdalifa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="calc-box">
+    <div class="header-section">
+        <h1>Fuel Efficiency Tracker ⛽</h1>
+        <p>Analisis konsumsi bensin kendaraanmu di tengah krisis migas global untuk memastikan efisiensi maksimal</p>
+    </div>
+    
+    <form action="/hitung" method="POST">
+        <div class="form-grid">
+            <div class="form-group">
+                <label>KM Awal 🏁</label>
+                <!-- Menambah step="any" agar bisa input desimal jika perlu -->
+                <input type="number" step="any" name="km_awal" value="{{ v_awal or '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>KM Akhir 🏁</label>
+                <input type="number" step="any" name="km_akhir" value="{{ v_akhir or '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Liter Bensin ⛽</label>
+                <!-- step="0.1" sudah benar untuk liter -->
+                <input type="number" step="0.1" name="liter" value="{{ v_liter or '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Harga per Liter 💰</label>
+                <input type="number" name="harga_bbm" value="{{ v_harga or '' }}" required>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button type="submit" class="btn-analisis">Analisis Efisiensi & Biaya</button>
+        </div>
+    </form>
+    
+    <!-- HASIL ANALISIS -->
+    {% if hasil is not none %}
+    <div class="result-box">
+        <h4>Hasil Analisis:</h4>
+        <div class="result-item">
+            <span>Jarak:</span> <strong>{{ jarak }} KM</strong>
+        </div>
+        <div class="result-item">
+            <span>Efisiensi:</span> <strong>{{ hasil }} KM/Liter</strong>
+        </div>
+        <div class="result-item">
+            <span>Total Biaya:</span> <strong>Rp {{ "{:,.0f}".format(biaya) if biaya else 0 }}</strong>
+        </div>
+
+        <!-- Badge status dinamis berdasarkan kategori dari Flask -->
+        <div class="status-badge {{ kategori }}">
+            {{ status }}
+        </div>
+        
+        <p class="disclaimer">
+            *Efisiensi Anda membantu ketahanan energi nasional.
+        </p>
+    </div>
+    {% endif %}
+
+</div> <!-- PENUTUP calc-box -->
+
+<!-- Navigasi About di luar kotak kalkulator -->
+<div class="nav-container">
+    <nav>
+        <a href="/about" class="btn-about">About</a>
+    </nav>
+</div>
+
+<script>
+// Script Enter untuk pindah baris (Sudah Bagus!)
+const inputs = document.querySelectorAll("input");
+
+inputs.forEach((input, index) => {
+    input.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+            e.preventDefault(); 
+            if (index + 1 < inputs.length) {
+                inputs[index + 1].focus();
+            } else {
+                this.form.submit();
+            }
+        }
+    });
+});
+</script>
+
+</body>
+</html>

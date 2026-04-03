@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Pengembang - Musdalifa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="calc-box about-card">
+        <!-- Section Foto Profil -->
+        <div class="profile-img">
+            <img src="{{ url_for('static', filename='profile.jpg') }}" alt="Foto Profil">
+        </div>
+        
+        <h2>Profil</h2>
+
+        <!-- Group Informasi Dasar -->
+        <div class="info-group">
+            <span class="info-label">Nama</span>
+            <span class="info-value">Musdalifa</span>
+        </div>
+
+        <div class="info-group">
+            <span class="info-label">NIM</span>
+            <span class="info-value">250907501015</span>
+        </div>
+
+        <div class="info-group">
+            <span class="info-label">Prodi / Instansi</span>
+            <span class="info-value">Bisnis Digital, UNM</span>
+        </div>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px rgba(255,255,255,0.2) solid;">
+
+        <!-- Section Narasi -->
+        <div class="reason-section">
+            <h3>Mengapa Kalkulator Ini Dibuat?</h3>
+            <p>
+                Di tengah situasi krisis migas global saat ini, memantau konsumsi bahan bakar bukan lagi sekadar pilihan, tapi keharusan. 
+                <strong>Kalkulator Efisiensi</strong> ini dirancang sebagai alat bantu praktis bagi pemilik kendaraan untuk menganalisis 
+                sejauh mana performa mesin mereka dalam mengolah bahan bakar terhadap jarak tempuh yang dihasilkan. 
+                Dengan data yang akurat, pengguna dapat lebih bijak dalam berkendara sekaligus berkontribusi pada penghematan energi nasional.
+            </p>
+        </div>   
+    </div>
+    
+    <!-- Navigasi Balik -->
+    <div class="navigation-bottom">
+        <a href="/" class="btn-about">← Kembali ke Kalkulator</a>
+    </div>
+
+</body>
+</html>
