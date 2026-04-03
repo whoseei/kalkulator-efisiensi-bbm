@@ -1,8 +1,8 @@
-import requests
+#import requests
 
-response = requests.get("https://siakad.unm.ac.id/")
-print(response.status_code)
-print(response.text)
+#response = requests.get("https://siakad.unm.ac.id/")
+#print(response.status_code)
+#print(response.text)
 
 import math
 
@@ -28,3 +28,6 @@ if nilai >= 44:
     print("Lulus")
 else:
     print("Tidak Lulus")
+
+
+    
